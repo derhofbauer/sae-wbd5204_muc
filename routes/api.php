@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 }); // <domain>/api/user
 
-Route::middleware('auth')->get('/{firstname?}/{lastname?}', [FeedController::class, 'api']);
+Route::middleware('auth:web')->get('/{firstname?}/{lastname?}', [FeedController::class, 'api']);
