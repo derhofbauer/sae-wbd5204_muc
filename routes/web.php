@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,11 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [PostController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
+/**
+ * s. https://laravel.com/docs/8.x/controllers#resource-controllers
+ */
+Route::resources([
+    'posts' => PostController::class
+]);

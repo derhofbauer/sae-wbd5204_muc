@@ -15,7 +15,8 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id(); // bigint(11) unsigned A_I 'id'
-            $table->unsignedBigInteger('author')->comment('User ID of author.');
+            $table->unsignedBigInteger('user_id')->comment('User ID of author.');
+            $table->text('image')->comment('Image path');
             $table->text('content')->nullable();
             $table->timestamps();
             $table->softDeletes(); // timestamp 'deleted_at'
@@ -23,7 +24,7 @@ class CreatePostsTable extends Migration
             /**
              * KEINE NEUE SPALTE!! sondern
              */
-            $table->foreign('author')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
