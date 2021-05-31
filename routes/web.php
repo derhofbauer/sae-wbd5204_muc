@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,13 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FeedController::class, 'feed'])->name('home');
+Route::get('/feed', [FeedController::class, 'feed'])->name('feed');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-Route::get('/dashboard', [PostController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/profile/{user?}', [PostController::class, 'index'])->middleware(['auth'])->name('profile');
 
 /**
  * s. https://laravel.com/docs/8.x/controllers#resource-controllers

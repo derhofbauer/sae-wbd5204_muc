@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Auth\Access\Gate;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,19 +13,27 @@ class PostController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index (Request $request)
+    public function index (Request $request, User $user)
     {
-        $user = $request->user();
-        $posts = $user->posts;
+        $heading = __('Profile');
+        if (!$user->exists) {
+            $user = $request->user();
+        } else {
+            $heading = __('Profile: ' . $user->name);
+        }
+        $posts = $user->posts()->ordered()->paginate(15);
 
-        return view('dashboard', [
-            'posts' => $posts
+        return view('feed', [
+            'posts' => $posts,
+            'heading' => $heading
         ]);
     }
 
     public function show (Request $request, Post $post)
     {
-        return $post;
+        return view('posts.show', [
+            'post' => $post
+        ]);
     }
 
     public function edit (Request $request, Post $post)
@@ -39,19 +47,54 @@ class PostController extends Controller
 
     public function update (Request $request, Post $post)
     {
-        $validatedData = $request->validate([
-            'image' => 'required|file|mimes:jpg,png,gif',
-            'content' => 'required|string|max:3000'
-        ]);
+        $validatedData = $this->validatePostForm($request);
 
-        $path = $request->file('image')->store('public/uploads');
+        $path = $this->handleUploadedFile($request);
         $post->content = $validatedData['content'];
-        $path = str_replace('public/', 'storage/', $path);
-        $path = "/{$path}";
-        $path = str_replace('//', '/', $path);
         $post->image = $path;
         $post->save();
 
         return redirect()->route('posts.index');
+    }
+
+    public function create (Request $request)
+    {
+        $this->authorize('create', Post::class);
+
+        return view('posts.create');
+    }
+
+    public function store (Request $request)
+    {
+        $validatedData = $this->validatePostForm($request);
+
+        $path = $this->handleUploadedFile($request);
+        $post = new Post($validatedData);
+        $post->image = $path;
+        $post->user_id = $request->user()->id;
+        $post->save();
+
+        return redirect()->route('posts.index');
+    }
+
+    private function validatePostForm (Request $request)
+    {
+        return $request->validate([
+            'image' => 'required|file|mimes:jpg,png,gif',
+            'content' => 'required|string|max:3000'
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return array|false|string|string[]
+     */
+    private function handleUploadedFile (Request $request)
+    {
+        $path = $request->file('image')->store('public/uploads');
+        $path = str_replace('public/', 'storage/', $path);
+        $path = "/{$path}";
+        return str_replace('//', '/', $path);
     }
 }
