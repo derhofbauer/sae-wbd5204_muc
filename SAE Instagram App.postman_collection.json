@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "8139ec06-ce72-4a3f-86e4-f5d27331d30b",
+		"name": "SAE Instagram App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sanctum CSRF Cookie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/sanctum/csrf-cookie",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sanctum",
+						"csrf-cookie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sanctum Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "eyJpdiI6Ik5CQVpnMkM2V242S0pSR1VIemFDdEE9PSIsInZhbHVlIjoiUE1jWURTNWJYZU9xd2xnaUJSUVl1cHZUSVdmemN5QmwwNmdYY2RoWDBkQ2toL0hpdEtpVGZaUFVUL0FrZlFUREYvMUpHMHRaZVJQcGQwOVVndVpEQlF1UUZ0R1ZSQ1VrVWRKVXEybmpnYmhyRzlac3p3UEJzbjFmUVh3Q01Na24iLCJtYWMiOiJjMmE1MzkzNGE0N2YzOGRmYWU3NmYyZmQ0NDE5ZjY0MTgxYjc0MDRjZTdhNGNmMDNmNWU4OTVjMjM2MDQxMmJjIn0",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "ford.prefect@galaxy.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Password1",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "Password1",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Ford Prefect",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sanctum Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "eyJpdiI6Ik5CQVpnMkM2V242S0pSR1VIemFDdEE9PSIsInZhbHVlIjoiUE1jWURTNWJYZU9xd2xnaUJSUVl1cHZUSVdmemN5QmwwNmdYY2RoWDBkQ2toL0hpdEtpVGZaUFVUL0FrZlFUREYvMUpHMHRaZVJQcGQwOVVndVpEQlF1UUZ0R1ZSQ1VrVWRKVXEybmpnYmhyRzlac3p3UEJzbjFmUVh3Q01Na24iLCJtYWMiOiJjMmE1MzkzNGE0N2YzOGRmYWU3NmYyZmQ0NDE5ZjY0MTgxYjc0MDRjZTdhNGNmMDNmNWU4OTVjMjM2MDQxMmJjIn0",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "arthur.dent@galaxy.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sanctum Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "eyJpdiI6Ik5CQVpnMkM2V242S0pSR1VIemFDdEE9PSIsInZhbHVlIjoiUE1jWURTNWJYZU9xd2xnaUJSUVl1cHZUSVdmemN5QmwwNmdYY2RoWDBkQ2toL0hpdEtpVGZaUFVUL0FrZlFUREYvMUpHMHRaZVJQcGQwOVVndVpEQlF1UUZ0R1ZSQ1VrVWRKVXEybmpnYmhyRzlac3p3UEJzbjFmUVh3Q01Na24iLCJtYWMiOiJjMmE1MzkzNGE0N2YzOGRmYWU3NmYyZmQ0NDE5ZjY0MTgxYjc0MDRjZTdhNGNmMDNmNWU4OTVjMjM2MDQxMmJjIn0",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "ford.prefect@galaxy.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Password1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feed",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "eyJpdiI6Ik5CQVpnMkM2V242S0pSR1VIemFDdEE9PSIsInZhbHVlIjoiUE1jWURTNWJYZU9xd2xnaUJSUVl1cHZUSVdmemN5QmwwNmdYY2RoWDBkQ2toL0hpdEtpVGZaUFVUL0FrZlFUREYvMUpHMHRaZVJQcGQwOVVndVpEQlF1UUZ0R1ZSQ1VrVWRKVXEybmpnYmhyRzlac3p3UEJzbjFmUVh3Q01Na24iLCJtYWMiOiJjMmE1MzkzNGE0N2YzOGRmYWU3NmYyZmQ0NDE5ZjY0MTgxYjc0MDRjZTdhNGNmMDNmNWU4OTVjMjM2MDQxMmJjIn0",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "ford.prefect@galaxy.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Password1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/feed",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"feed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Posts index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/posts/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/profile/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"profile",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Posts show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/posts/12",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Posts store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/alexander/Bilder/37844315_454803461597516_8815318794768482304_n (1).jpg"
+						},
+						{
+							"key": "content",
+							"value": "Some fancy content",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/posts",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Posts update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"Some fancy content 2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/posts/12",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Posts destroy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/posts/12",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Me",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/me",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"me"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "5|ExHpVxeNayWU5ehcRsw8r7e6TgIFKBgyXE9ks0am",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -39,8 +39,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::prefix('api')
-                // ->middleware('api') // hier definieren wir die Middleware-Group für stateful API Authentication um.
-                ->middleware('web')
+                ->middleware('api') // hier definieren wir die Middleware-Group für stateful API Authentication um.
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 

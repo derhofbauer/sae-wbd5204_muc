@@ -49,7 +49,7 @@ class PostController extends Controller
     {
         $validatedData = $this->validatePostForm($request);
 
-        $path = $this->handleUploadedFile($request);
+        $path = self::handleUploadedFile($request);
         $post->content = $validatedData['content'];
         $post->image = $path;
         $post->save();
@@ -68,7 +68,7 @@ class PostController extends Controller
     {
         $validatedData = $this->validatePostForm($request);
 
-        $path = $this->handleUploadedFile($request);
+        $path = self::handleUploadedFile($request);
         $post = new Post($validatedData);
         $post->image = $path;
         $post->user_id = $request->user()->id;
@@ -90,7 +90,7 @@ class PostController extends Controller
      *
      * @return array|false|string|string[]
      */
-    private function handleUploadedFile (Request $request)
+    public static function handleUploadedFile (Request $request)
     {
         $path = $request->file('image')->store('public/uploads');
         $path = str_replace('public/', 'storage/', $path);

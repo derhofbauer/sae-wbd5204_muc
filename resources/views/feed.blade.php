@@ -7,6 +7,8 @@
                 {{ __('Posts') }}
             @endif
         </h2>
+
+        <div id="react-app"></div>
     </x-slot>
 
     <div class="py-12">
